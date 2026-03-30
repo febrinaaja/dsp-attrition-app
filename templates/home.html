@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home {% endblock %}
+{% block content %}
+
+<div class="hero-section">
+    <h1>Selamat Datang di Portal Analitik Karyawan</h1>
+    <a href="/predict" class="btn-primary">Mulai Prediksi Sekarang</a>
+</div>
+
+<hr class="divider">
+
+<div class="features-section">
+    <div class="feature-card">
+        <h3>Dashboard Analitik</h3>
+        <p>Visualisasi data interaktif untuk memantau metrik utama SDM secara real-time.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Prediksi AI</h3>
+        <p>Model Machine Learning tingkat lanjut untuk memprediksi potensi *attrition* karyawan.</p>
+    </div>
+    <div class="feature-card">
+        <h3>Cepat & Efisien</h3>
+        <p>Antarmuka modern dan responsif. Dapatkan hasil analisis hanya dalam hitungan detik.</p>
+    </div>
+</div>
+
+{% endblock %}
