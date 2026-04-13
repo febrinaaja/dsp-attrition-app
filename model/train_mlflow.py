@@ -10,30 +10,20 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from mlflow.models.signature import infer_signature
 
-# Abaikan peringatan agar terminal lebih bersih
 warnings.filterwarnings("ignore")
 
-# Muat variabel environment dari file .env (berisi USERNAME dan TOKEN)
-load_dotenv()
 
 def run_rf_model_mlflow(df):
-    # 1. Konfigurasi DagsHub & MLFlow
-    # PENTING: Ganti dengan URI MLflow Tracking DagsHub Anda!
     uri_dagshub = "https://dagshub.com/febrinaaja/dsp-attrition-app.mlflow"
     mlflow.set_tracking_uri(uri_dagshub)
 
-    # Mengambil kredensial dari file .env
-    # os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('USERNAME')
-    # os.environ['MLFLOW_TRACKING_PASSWORD'] = os.getenv('TOKEN')
     
-    os.environ['MLFLOW_TRACKING_USERNAME'] = "febrinaaja" # Ganti dengan username Anda
+    os.environ['MLFLOW_TRACKING_USERNAME'] = "febrinaaja"
     os.environ['MLFLOW_TRACKING_PASSWORD'] = "0e76d4e46c7d2fd6530f88bfa79be51b97438717"
 
-    # 2. Persiapan Eksperimen
     experiment_name = "attrition_prediction"
     client = mlflow.client.MlflowClient()
 
-    # Mengecek apakah eksperimen sudah ada atau buat baru
     try:
         experiment_id = client.create_experiment(name=experiment_name)
         print(f"Eksperimen '{experiment_name}' berhasil dibuat dengan ID: {experiment_id}")
@@ -42,7 +32,6 @@ def run_rf_model_mlflow(df):
         experiment_id = experiment.experiment_id
         print(f"Eksperimen '{experiment_name}' sudah ada dengan ID: {experiment_id}")
 
-    # 3. Persiapan Data (Pastikan kolom target Anda bernama 'Attrition')
     # y = df['Attrition']
     # X = df.drop('Attrition', axis=1)
 
@@ -58,7 +47,6 @@ def run_rf_model_mlflow(df):
     # Splitting data
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)
     
-    # 4. Memulai Logging MLFlow
     mlflow.sklearn.autolog() # Autologging parameter bawaan scikit-learn
 
     with mlflow.start_run(run_name="rf-default-model", experiment_id=experiment_id) as run:
@@ -102,15 +90,12 @@ def run_rf_model_mlflow(df):
                 input_example=X_train.head(1)
             )
 
-        # Menampilkan informasi sukses di terminal
         print("\n--- Proses Selesai ---")
         print(f"Run ID: {run.info.run_id}")
         print(f"Status: {run.info.status}")
         print("Silakan cek menu Experiments di DagsHub Anda!")
 
 if __name__ == "__main__":
-    # PENTING: Sesuaikan lokasi dataset bersih Anda
-    # Buat folder 'data' dan masukkan dataset yang sudah melewati preprocessing ke dalamnya
     dataset_path = "data/employe_data.csv"
 
     if os.path.exists(dataset_path):
