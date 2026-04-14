@@ -19,7 +19,7 @@ body {
 
 /* --- Navigation --- */
 nav {
-    background-color:  #2563eb;
+    background-color:  #FF6B00;
     padding: 1rem 5%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     display: flex;
@@ -33,7 +33,7 @@ nav {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -44,7 +44,7 @@ nav ul {
 }
 
 nav a.nav-link {
-    color:#ffffff;
+    color:#fff;
     text-decoration: none;
     font-weight: 500;
     font-size: 1rem;
@@ -52,7 +52,7 @@ nav a.nav-link {
 }
 
 nav a.nav-link:hover {
-    color: #88adff;
+    color: #FFA94D;
 }
 
 /* --- Main Container --- */
@@ -91,7 +91,7 @@ h1, h2, h3 {
 
 .btn-primary {
     display: inline-block;
-    background-color: #2563eb;
+    background-color: #FF6B00;
     color: white;
     padding: 0.8rem 1.5rem;
     border-radius: 8px;
@@ -102,7 +102,7 @@ h1, h2, h3 {
 }
 
 .btn-primary:hover {
-    background-color: #1d4ed8;
+    background-color: #FFA94D;
     transform: translateY(-2px);
 }
 
@@ -132,7 +132,7 @@ h1, h2, h3 {
 .feature-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    border-color: #2563eb;
+    border-color: #FF6B00;
 }
 
 .feature-icon {
@@ -179,13 +179,13 @@ input[type="number"], select {
 
 input[type="number"]:focus, select:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #FF6B00;
     background-color:  #ffffff;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .btn-submit {
-    background-color:  #10b981;
+    background-color:  #FF6B00;
     color: #ffffff;
     padding: 1rem;
     border: none;
@@ -202,7 +202,7 @@ input[type="number"]:focus, select:focus {
 }
 
 .btn-submit:hover {
-    background-color: #059669;
+    background-color: #FFA94D;
     transform: translateY(-2px);
 }
 
