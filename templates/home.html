@@ -1,26 +1,45 @@
 {% extends "base.html" %}
-{% block title %}Home {% endblock %}
+{% block title %}Home{% endblock %}
 {% block content %}
 
 <div class="hero-section">
-    <h1>Selamat Datang di Portal Analitik Karyawan</h1>
-    <a href="/predict" class="btn-primary">Mulai Prediksi Sekarang</a>
+    <span class="badge">Portal SDM Berbasis AI</span>
+    <h1>Portal Analitik Karyawan</h1>
+    <p>Pantau, analisis, dan prediksi dinamika SDM perusahaan Anda dengan kecerdasan buatan secara real-time.</p>
+    <div class="cta-row">
+        <a href="/predict" class="btn-primary">Mulai Prediksi Sekarang</a>
+        <a href="/dashboard" class="btn-secondary">Lihat Dashboard</a>
+    </div>
 </div>
 
 <hr class="divider">
 
+<p class="section-label">Fitur Utama</p>
+
 <div class="features-section">
     <div class="feature-card">
+        <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+        </div>
         <h3>Dashboard Analitik</h3>
         <p>Visualisasi data interaktif untuk memantau metrik utama SDM secara real-time.</p>
+        <span class="feature-tag">Real-time</span>
     </div>
     <div class="feature-card">
+        <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/><path d="M17 11l2 2 4-4"/></svg>
+        </div>
         <h3>Prediksi AI</h3>
-        <p>Model Machine Learning tingkat lanjut untuk memprediksi potensi attrition karyawan.</p>
+        <p>Model machine learning tingkat lanjut untuk memprediksi potensi attrition karyawan.</p>
+        <span class="feature-tag">Machine Learning</span>
     </div>
     <div class="feature-card">
+        <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
         <h3>Cepat & Efisien</h3>
         <p>Antarmuka modern dan responsif. Dapatkan hasil analisis hanya dalam hitungan detik.</p>
+        <span class="feature-tag">Responsif</span>
     </div>
 </div>
 
