@@ -1,82 +1,105 @@
 {% extends "base.html" %}
-{% block title %}Analitik Karyawan{% endblock %}
+{% block title %}Form Prediksi{% endblock %}
 {% block content %}
 
-<h2>Form Prediksi</h2>
-<p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Masukkan data karyawan di bawah ini untuk melihat probabilitas mereka meninggalkan perusahaan.</p>
+<div class="fp-header">
+    <h2>Form Prediksi Attrition</h2>
+    <p>Masukkan data karyawan di bawah ini untuk melihat probabilitas resign.</p>
+</div>
+
 
 <form method="POST">
-    <div class="form-grid">
-        <div class="form-group">
-            <label>Umur</label>
-            <input type="number" name="Age" placeholder="Contoh: 30" required>
-        </div>
 
-        <div class="form-group">
-            <label>Pendapatan Bulanan ($)</label>
-            <input type="number" name="MonthlyIncome" placeholder="Contoh: 5000" required>
-        </div>
-
-        <div class="form-group">
-            <label>Jarak dari Rumah (km)</label>
-            <input type="number" name="DistanceFromHome" placeholder="Contoh: 10" required>
-        </div>
-
-        <div class="form-group">
-            <label>Tahun Bekerja di Perusahaan</label>
-            <input type="number" name="YearsAtCompany" placeholder="Contoh: 5" required>
-        </div>
-
-        <div class="form-group">
-            <label>Tingkat Jabatan</label>
-            <input type="number" name="JobLevel" placeholder="1-5" required>
-        </div>
-
-        <div class="form-group">
-            <label>Jumlah Perusahaan Tempat Bekerja</label>
-            <input type="number" name="NumCompaniesWorked" placeholder="Contoh: 2" required>
-        </div>
-
-        <div class="form-group">
-            <label>Kepuasaan Pekerjaan</label>
-            <select name="JobSatisfaction">
-                <option value="1">1 (Rendah)</option>
-                <option value="2">2 (Sedang)</option>
-                <option value="3" selected>3 (Tinggi)</option>
-                <option value="4">4 (Sangat Tinggi)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Kepuasaan Lingkungan</label>
-            <select name="EnvironmentSatisfaction">
-                <option value="1">1 (Rendah)</option>
-                <option value="2">2 (Sedang)</option>
-                <option value="3" selected>3 (Tinggi)</option>
-                <option value="4">4 (Sangat Tinggi)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Tingkat Keseimbangan Pekerjaan</label>
-            <select name="WorkLifeBalance">
-                <option value="1">1 (Buruk)</option>
-                <option value="2">2 (Baik)</option>
-                <option value="3" selected>3 (Lebih Baik)</option>
-                <option value="4">4 (Terbaik)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Lembur</label>
-            <select name="OverTime">
-                <option value="No">Tidak</option>
-                <option value="Yes">Ya</option>
-            </select>
+    <div class="fp-section">
+        <div class="fp-section-title">Informasi personal</div>
+        <div class="fp-grid">
+            <div class="fp-group">
+                <label>Umur <span>(tahun)</span></label>
+                <input class="fp-input" type="number" name="Age" placeholder="Contoh: 30" min="18" max="65" required>
+                <span class="fp-hint">Rentang: 18 – 65 tahun</span>
+            </div>
+            <div class="fp-group">
+                <label>Pendapatan bulanan <span>(USD)</span></label>
+                <input class="fp-input" type="number" name="MonthlyIncome" placeholder="Contoh: 5000" required>
+            </div>
+            <div class="fp-group">
+                <label>Jarak dari rumah <span>(km)</span></label>
+                <input class="fp-input" type="number" name="DistanceFromHome" placeholder="Contoh: 10" required>
+            </div>
+            <div class="fp-group">
+                <label>Jumlah perusahaan tempat bekerja <span>(total)</span></label>
+                <input class="fp-input" type="number" name="NumCompaniesWorked" placeholder="Contoh: 2" min="0" required>
+                <span class="fp-hint">Termasuk perusahaan saat ini</span>
+            </div>
         </div>
     </div>
 
-    <button type="submit" class="btn-submit">Mulai Prediksi</button>
+    <div class="fp-section">
+        <div class="fp-section-title">Informasi pekerjaan</div>
+        <div class="fp-grid">
+            <div class="fp-group">
+                <label>Tahun bekerja</label>
+                <input class="fp-input" type="number" name="YearsAtCompany" placeholder="Contoh: 5" min="0" required>
+            </div>
+            <div class="fp-group">
+                <label>Tingkat jabatan</label>
+                <select class="fp-select" name="JobLevel" required>
+                    <option value="" disabled selected>Pilih tingkat jabatan</option>
+                    <option value="1">1 — Staff</option>
+                    <option value="2">2 — Junior</option>
+                    <option value="3">3 — Senior</option>
+                    <option value="4">4 — Lead</option>
+                    <option value="5">5 — Manager</option>
+                </select>
+            </div>
+            <div class="fp-group">
+                <label>Lembur</label>
+                <select class="fp-select" name="OverTime">
+                    <option value="No">Tidak</option>
+                    <option value="Yes">Ya, sering lembur</option>
+                </select>
+            </div>
+            <div class="fp-group">
+                <label>Work-life balance</label>
+                <select class="fp-select" name="WorkLifeBalance">
+                    <option value="1">1 — Buruk</option>
+                    <option value="2">2 — Cukup</option>
+                    <option value="3" selected>3 — Baik</option>
+                    <option value="4">4 — Sangat baik</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="fp-section">
+        <div class="fp-section-title">Tingkat kepuasan</div>
+        <div class="fp-grid">
+            <div class="fp-group">
+                <label>Kepuasan pekerjaan</label>
+                <select class="fp-select" name="JobSatisfaction">
+                    <option value="1">1 — Rendah</option>
+                    <option value="2">2 — Sedang</option>
+                    <option value="3" selected>3 — Tinggi</option>
+                    <option value="4">4 — Sangat tinggi</option>
+                </select>
+            </div>
+            <div class="fp-group">
+                <label>Kepuasan lingkungan</label>
+                <select class="fp-select" name="EnvironmentSatisfaction">
+                    <option value="1">1 — Rendah</option>
+                    <option value="2">2 — Sedang</option>
+                    <option value="3" selected>3 — Tinggi</option>
+                    <option value="4">4 — Sangat tinggi</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="fp-actions">
+        <button type="submit" class="fp-submit">
+            Mulai prediksi
+        </button>
+    </div>
 </form>
 
 {% if result %}
